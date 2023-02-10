@@ -15,19 +15,51 @@
         <h1 class="text-center mb-5">Product Managment System</h1>
         <div class="form-group mb-3">
           <label for="product-name" class="mb-2">Product Name</label>
-          <input type="text" class="form-control" id="product-name" />
+          <input
+            type="text"
+            class="form-control"
+            id="product-name"
+            onkeyup="productNameValidation()"
+          />
+          <p class="text-danger d-none" id="product-name-error">
+            Enter Valid Name, [4-9] characters Starts with captital letter.
+          </p>
         </div>
         <div class="form-group mb-3">
           <label for="product-price" class="mb-2">Product Price</label>
-          <input type="text" class="form-control" id="product-price" />
+          <input
+            type="text"
+            class="form-control"
+            id="product-price"
+            onkeyup="productPriceValidation()"
+          />
+          <p class="text-danger d-none" id="product-price-error">
+            Enter Valid price, 1000-1000
+          </p>
         </div>
         <div class="form-group mb-3">
           <label for="product-cat" class="mb-2">Product Category</label>
-          <input type="text" class="form-control" id="product-cat" />
+          <input
+            type="text"
+            class="form-control"
+            id="product-cat"
+            onkeyup="productCatValidation()"
+          />
+          <p class="text-danger d-none" id="product-cat-error">
+            Enter Valid Category, (TV | Mobile | Watch)
+          </p>
         </div>
         <div class="form-group mb-3">
           <label for="product-desc" class="mb-2">Product Description</label>
-          <textarea name="" id="product-desc" class="form-control"></textarea>
+          <textarea
+            name=""
+            id="product-desc"
+            class="form-control"
+            onkeyup="productDescValidation()"
+          ></textarea>
+          <p class="text-danger d-none" id="product-desc-error">
+            Max Character is 250
+          </p>
         </div>
 
         <button id="addProductBtn" onclick="addProduct()" class="btn btn-info">
