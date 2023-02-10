@@ -9,7 +9,6 @@ var ProductListNameinLocalStorage = "Products";
 if (!getProductsFromLocalStorage()) {
   productList = [];
 } else {
-  productList.newName = "";
   productList = getProductsFromLocalStorage();
   displayProduct(productList);
 }
@@ -86,7 +85,7 @@ function editproduct(index) {
         productList[index].price = productPrice.value;
         productList[index].category = productCategory.value;
         productList[index].description = productDescription.value;
-        productList.newName = "";
+        productList[index].newName = "";
 
         displayProduct(productList);
 
