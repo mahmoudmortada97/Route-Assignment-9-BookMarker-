@@ -9,6 +9,7 @@ var ProductListNameinLocalStorage = "Products";
 if (!getProductsFromLocalStorage()) {
   productList = [];
 } else {
+  productList.newName = "";
   productList = getProductsFromLocalStorage();
   displayProduct(productList);
 }
@@ -85,8 +86,9 @@ function editproduct(index) {
         productList[index].price = productPrice.value;
         productList[index].category = productCategory.value;
         productList[index].description = productDescription.value;
+        productList.newName = "";
+
         displayProduct(productList);
-        productList[index].newName = "";
 
         updateProductsInputsWithNewValues();
         setProductsinLocalStorage(productList);
@@ -100,13 +102,13 @@ var searchProducts = function (term) {
   foundedProductsinSearch = [];
   for (var i = 0; i < productList.length; i++) {
     if (productList[i].name.toLowerCase().includes(term.toLowerCase())) {
-      foundedProductsinSearch.push(productList[i]);
-      foundedProductsinSearch[i].newName = foundedProductsinSearch[i].name
+      productList[i].newName = productList[i].name
         .toLowerCase()
         .replace(
           term.toLowerCase(),
           `<span class="text-danger bg-warning">${term}</span>`
         );
+      foundedProductsinSearch.push(productList[i]);
     }
   }
   displayProduct(foundedProductsinSearch);
