@@ -5,8 +5,13 @@ var bookMarkList = [];
 var clearBtn;
 var siteNameErrorMsg = document.querySelector("#site-name-error");
 var siteURLErrorMsg = document.querySelector("#website-url-error");
-console.log(siteName);
-console.log(siteURL);
+
+if (localStorage.getItem("bookMark") == null) {
+  bookMarkList = [];
+} else {
+  bookMarkList = JSON.parse(localStorage.getItem("bookMark"));
+  displayBookmarks(bookMarkList)
+}
 
 submitBtn.addEventListener("click", function (event) {
   if (validateSiteName() && validatesiteURL()) {
@@ -16,6 +21,7 @@ submitBtn.addEventListener("click", function (event) {
     };
     bookMarkList.push(bookmark);
     displayBookmarks(bookMarkList);
+    localStorage.setItem("bookMark", JSON.stringify(bookMarkList));
     clearInputs();
   } else if (!validateSiteName() && validatesiteURL()) {
     siteNameErrorMsg.classList.replace("d-none", "d-block");
@@ -58,12 +64,12 @@ function displayBookmarks(List) {
   document.querySelector("#bookmarks").innerHTML = cartona;
 
   clearBtn = Array.from(document.querySelectorAll(".clearBtn"));
-  console.log(clearBtn);
 
   for (let index = 0; index < clearBtn.length; index++) {
     clearBtn[index].addEventListener("click", function () {
       bookMarkList.splice(index, 1);
       displayBookmarks(bookMarkList);
+      localStorage.setItem("bookMark", JSON.stringify(bookMarkList));
     });
   }
 }
@@ -75,7 +81,7 @@ function validateSiteName() {
 
 function validatesiteURL() {
   var regex =
-    /^[(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    /^[(www\.)a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   return regex.test(siteURL.value);
 }
 
