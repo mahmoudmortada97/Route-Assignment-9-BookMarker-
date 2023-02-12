@@ -1,3 +1,12 @@
-textarea{
-    resize: none;
+.line {
+  width: 80%;
+  height: 1px;
+  background-color: black;
+  margin: 20px auto;
+}
+.bookmark-item {
+  background-image: linear-gradient(#eee, #ddd);
+}
+body{
+    background-color: rgba(0, 0, 0, 0.7);
 }

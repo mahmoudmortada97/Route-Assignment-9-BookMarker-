@@ -4,99 +4,69 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Managment System</title>
+    <title>Route Assignment 9 ( BookMarker )</title>
     <link rel="stylesheet" href="./Style/all.min.css" />
     <link rel="stylesheet" href="./Style/bootstrap.min.css" />
     <link rel="stylesheet" href="./Style/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="product-form w-75 mx-auto">
-        <h1 class="text-center mb-5">Product Managment System</h1>
-        <div class="form-group mb-3">
-          <label for="product-name" class="mb-2">Product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="product-name"
-            onkeyup="productNameValidation()"
-          />
-          <p class="text-danger d-none" id="product-name-error">
-            Enter Valid Name, [4-9] characters Starts with captital letter.
-          </p>
-        </div>
-        <div class="form-group mb-3">
-          <label for="product-price" class="mb-2">Product Price</label>
-          <input
-            type="text"
-            class="form-control"
-            id="product-price"
-            onkeyup="productPriceValidation()"
-          />
-          <p class="text-danger d-none" id="product-price-error">
-            Enter Valid price, 1000-10000
-          </p>
-        </div>
-        <div class="form-group mb-3">
-          <label for="product-cat" class="mb-2">Product Category</label>
-          <input
-            type="text"
-            class="form-control"
-            id="product-cat"
-            onkeyup="productCatValidation()"
-          />
-          <p class="text-danger d-none" id="product-cat-error">
-            Enter Valid Category, (TV | Mobile | Watch)
-          </p>
-        </div>
-        <div class="form-group mb-3">
-          <label for="product-desc" class="mb-2">Product Description</label>
-          <textarea
-            name=""
-            id="product-desc"
-            class="form-control"
-            onkeyup="productDescValidation()"
-          ></textarea>
-          <p class="text-danger d-none" id="product-desc-error">
-            Max Character is 250
-          </p>
-        </div>
+    <div class="container py-4 text-light">
+      <h1 class="text-center">Bookmarker</h1>
+      <div class="line"></div>
+      <section
+        id="bookmark-add-section"
+        class="w-75 mx-auto mt-4 py-4 bg-secondary text-light"
+      >
+        <div class="content">
+          <h3 class="text-center text-warning">Bookmark your favorite sites</h3>
+          <div class="form-group mb-3 w-75 mx-auto mt-5">
+            <label for="site-name" class="mb-2 text-center d-block"
+              >Site Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="site-name"
+              placeholder="Bookmark Name"
+            />
+            <p
+              class="text-danger d-none bg-warning text-center mt-2"
+              id="site-name-error"
+            >
+              Enter Valid Site Name, [3-9] characters Starts with captital
+              letter.
+            </p>
+          </div>
 
-        <button id="addProductBtn" onclick="addProduct()" class="btn btn-info">
-          Add Product
-        </button>
-        <button id="updateProductBtn" class="btn btn-success d-none">
-          Update Product
-        </button>
+          <div class="form-group mb-3 w-75 mx-auto mt-5">
+            <label for="site-url" class="mb-2 text-center d-block"
+              >Site URL</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="site-url"
+              placeholder="Website URL  EX: www.example.com"
+            />
+            <p
+              class="text-danger d-none bg-warning text-center mt-2"
+              id="website-url-error"
+            >
+              Enter Valid URL as required,( Ex : http://www.foufos.gr or
+              www.foufos.gr )
+            </p>
+          </div>
 
-        <div class="form-group mb-3">
-          <label for="search" class="my-4 fs-3">Search</label>
-          <input
-            oninput="searchProducts(this.value)"
-            type="text"
-            name="search"
-            id="search"
-            class="form-control"
-          />
+          <button id="submitBtn" class="btn btn-info d-block mx-auto">
+            Submit
+          </button>
         </div>
+      </section>
 
-        <table class="table mt-4 text-center">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Description</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody id="product-data"></tbody>
-        </table>
-      </div>
+      <section id="bookmarks" class="text-dark mt-4 w-75 mx-auto"></section>
+      <div class="line"></div>
+      <p class="w-75 mx-auto">© 2019 Bookmarker Inc.</p>
     </div>
-
     <script src="./JS/bootstrap.bundle.min.js"></script>
     <script src="JS/index.js"></script>
   </body>
