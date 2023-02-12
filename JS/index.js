@@ -21,7 +21,6 @@ function addProduct() {
     productCatValidation() &&
     productDescValidation()
   ) {
-    console.log("add");
     var product = {
       name: productName.value,
       price: productPrice.value,
@@ -68,6 +67,8 @@ function deleteProduct(index) {
 }
 
 function editproduct(index) {
+  document.getElementById("search").value = "";
+  // displayProduct(productList);
   document.getElementById("addProductBtn").classList.add("d-none");
   document.getElementById("updateProductBtn").classList.remove("d-none");
 
@@ -98,19 +99,18 @@ function editproduct(index) {
 }
 
 var searchProducts = function (term) {
-  foundedProductsinSearch = [];
+  var foundedProductsinSearch = [];
+
   for (var i = 0; i < productList.length; i++) {
     if (productList[i].name.toLowerCase().includes(term.toLowerCase())) {
-      productList[i].newName = productList[i].name
-        .toLowerCase()
-        .replace(
-          term.toLowerCase(),
-          `<span class="text-danger bg-warning">${term}</span>`
-        );
+      productList[i].newName = productList[i].name.replace(
+        term,
+        `<span class="text-danger bg-warning">${term}</span>`
+      );
       foundedProductsinSearch.push(productList[i]);
     }
   }
-  displayProduct(foundedProductsinSearch);
+  displayProduct(productList);
 };
 
 function updateProductsInputsWithNewValues(flag) {
