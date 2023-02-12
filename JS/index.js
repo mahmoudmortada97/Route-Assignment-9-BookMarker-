@@ -103,14 +103,16 @@ var searchProducts = function (term) {
 
   for (var i = 0; i < productList.length; i++) {
     if (productList[i].name.toLowerCase().includes(term.toLowerCase())) {
-      productList[i].newName = productList[i].name.replace(
-        term,
-        `<span class="text-danger bg-warning">${term}</span>`
-      );
+      productList[i].newName = productList[i].name
+        .toLowerCase()
+        .replace(
+          term.toLowerCase(),
+          `<span class="text-danger bg-warning">${term}</span>`
+        );
       foundedProductsinSearch.push(productList[i]);
     }
   }
-  displayProduct(productList);
+  displayProduct(foundedProductsinSearch);
 };
 
 function updateProductsInputsWithNewValues(flag) {
