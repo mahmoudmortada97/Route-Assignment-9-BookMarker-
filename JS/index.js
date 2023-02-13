@@ -2,18 +2,19 @@ var siteName = document.querySelector("#site-name");
 var siteURL = document.querySelector("#site-url");
 var submitBtn = document.querySelector("#submitBtn");
 var bookMarkList = [];
-var clearBtn;
 var siteNameErrorMsg = document.querySelector("#site-name-error");
 var siteURLErrorMsg = document.querySelector("#website-url-error");
+var clearBtn;
 
 if (localStorage.getItem("bookMark") == null) {
   bookMarkList = [];
 } else {
   bookMarkList = JSON.parse(localStorage.getItem("bookMark"));
-  displayBookmarks(bookMarkList)
+  displayBookmarks(bookMarkList);
 }
 
-submitBtn.addEventListener("click", function (event) {
+//* On click on Submit button **/
+submitBtn.addEventListener("click", function () {
   if (validateSiteName() && validatesiteURL()) {
     var bookmark = {
       name: siteName.value,
@@ -32,6 +33,7 @@ submitBtn.addEventListener("click", function (event) {
     siteURLErrorMsg.classList.replace("d-none", "d-block");
   }
 });
+
 siteName.addEventListener("change", function () {
   if (!validateSiteName()) {
     siteNameErrorMsg.classList.replace("d-none", "d-block");

@@ -5,8 +5,8 @@
   margin: 20px auto;
 }
 .bookmark-item {
-  background-image: linear-gradient(#eee, #ddd);
+  background-image: linear-gradient(#eee, #ddd, rgb(179, 129, 129));
 }
-body{
-    background-color: rgba(0, 0, 0, 0.7);
+body {
+  background-color: rgba(0, 0, 0, 0.7);
 }
